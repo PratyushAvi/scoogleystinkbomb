@@ -1,0 +1,25 @@
+{
+    "name": "scoogleystinkbomb",
+    "version": "1.0.0",
+    "description": "",
+    "main": "tailwind.config.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "npx tailwindcss -i ./src/input.css -o ./css/styles.css --watch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/PratyushAvi/scoogleystinkbomb.git"
+    },
+    "author": "pratyush avi",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/PratyushAvi/scoogleystinkbomb/issues"
+    },
+    "homepage": "https://github.com/PratyushAvi/scoogleystinkbomb#readme",
+    "devDependencies": {
+        "autoprefixer": "^10.4.7",
+        "postcss": "^8.4.13",
+        "tailwindcss": "^3.0.24"
+    }
+}
