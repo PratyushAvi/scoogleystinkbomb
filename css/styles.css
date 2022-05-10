@@ -782,14 +782,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   }
 }
 
-@media (max-height: 700px) {
+@media (max-height: 900px) {
   .short\:h-\[100\%\] {
     height: 100%;
-  }
-}
-
-@media (max-width: 300px) {
-  .tiny\:w-\[95vw\] {
-    width: 95vw;
   }
 }

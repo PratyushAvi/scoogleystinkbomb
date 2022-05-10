@@ -3,9 +3,8 @@ module.exports = {
     theme: {
         extend: {
             screens: {
-                'short': { 'raw': '(max-height: 700px)' },
+                'short': { 'raw': '(max-height: 900px)' },
                 // => @media (max-height: 700px) { ... }
-                'tiny': { 'raw': '(max-width: 300px)' },
             }
         },
         fontFamily: {
