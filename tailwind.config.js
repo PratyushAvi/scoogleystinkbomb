@@ -1,7 +1,13 @@
 module.exports = {
     content: ["./*.{html,js}"],
     theme: {
-        extend: {},
+        extend: {
+            screens: {
+                'short': { 'raw': '(max-height: 700px)' },
+                // => @media (max-height: 700px) { ... }
+                'tiny': { 'raw': '(max-width: 300px)' },
+            }
+        },
         fontFamily: {
             'open-sans': ['"Open Sans"', 'sans-serif'],
             'comfortaa': ['Comfortaa', 'cursive'],
