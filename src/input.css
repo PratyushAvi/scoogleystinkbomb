@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@layer components {
+    .round-button {
+        @apply transition ease-in-out duration-[0.5s] hover:bg-[#ddd] sm:w-[50px] sm:h-[50px] w-[30px] h-[30px] rounded-[50%] bg-[#eee] sm:bg-[#fff] grid content-center;
+    }
+}
