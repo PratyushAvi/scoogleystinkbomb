@@ -348,6 +348,9 @@
   .mb-\[5vh\] {
     margin-bottom: 5vh;
   }
+  .mb-\[20px\] {
+    margin-bottom: 20px;
+  }
   .box-border {
     box-sizing: border-box;
   }
