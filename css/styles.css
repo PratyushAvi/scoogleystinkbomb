@@ -328,9 +328,6 @@
       max-width: 96rem;
     }
   }
-  .m-\[10px\] {
-    margin: 10px;
-  }
   .m-\[20px\] {
     margin: 20px;
   }
@@ -342,6 +339,24 @@
   }
   .my-4 {
     margin-block: calc(var(--spacing) * 4);
+  }
+  .my-\[5px\] {
+    margin-block: 5px;
+  }
+  .my-\[10px\] {
+    margin-block: 10px;
+  }
+  .my-\[50px\] {
+    margin-block: 50px;
+  }
+  .mt-\[10px\] {
+    margin-top: 10px;
+  }
+  .mt-\[50px\] {
+    margin-top: 50px;
+  }
+  .mt-\[100px\] {
+    margin-top: 100px;
   }
   .mb-\[5vh\] {
     margin-bottom: 5vh;
@@ -702,11 +717,14 @@
   .grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
+  .grid-cols-8 {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+  .grid-cols-10 {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
+  }
   .grid-cols-12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-  }
-  .grid-cols-16 {
-    grid-template-columns: repeat(16, minmax(0, 1fr));
   }
   .grid-cols-none {
     grid-template-columns: none;
@@ -1326,11 +1344,17 @@
   .text-\[0\.8rem\] {
     font-size: 0.8rem;
   }
+  .text-\[0\.9rem\] {
+    font-size: 0.9rem;
+  }
   .text-\[1\.2rem\] {
     font-size: 1.2rem;
   }
   .text-\[1\.3rem\] {
     font-size: 1.3rem;
+  }
+  .text-\[1\.5rem\] {
+    font-size: 1.5rem;
   }
   .text-\[1rem\] {
     font-size: 1rem;
@@ -1427,6 +1451,12 @@
   }
   .\[color\:red\]\/50\! {
     color: color-mix(in oklab, red 50%, transparent) !important;
+  }
+  .text-\[gray\] {
+    color: gray;
+  }
+  .text-\[grey\] {
+    color: grey;
   }
   .capitalize {
     text-transform: capitalize;
@@ -1858,6 +1888,11 @@
   .transform-view {
     transform-box: view-box;
   }
+  .max-sm\:col-span-1 {
+    @media (width < 40rem) {
+      grid-column: span 1 / span 1;
+    }
+  }
   .max-sm\:mx-auto {
     @media (width < 40rem) {
       margin-inline: auto;
@@ -1918,11 +1953,6 @@
       flex-direction: column-reverse;
     }
   }
-  .max-sm\:text-\[0\.7rem\] {
-    @media (width < 40rem) {
-      font-size: 0.7rem;
-    }
-  }
   .max-sm\:text-\[0\.9rem\] {
     @media (width < 40rem) {
       font-size: 0.9rem;
@@ -1948,9 +1978,54 @@
       font-size: 1.5rem;
     }
   }
+  .md\:grid-cols-4 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-5 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-6 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+  .md\:grid-cols-10 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+    }
+  }
   .lg\:w-\[50\%\] {
     @media (width >= 64rem) {
       width: 50%;
+    }
+  }
+  .lg\:grid-cols-6 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-8 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-10 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(10, minmax(0, 1fr));
+    }
+  }
+  .lg\:grid-cols-12 {
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+  .xl\:w-\[40\%\] {
+    @media (width >= 80rem) {
+      width: 40%;
     }
   }
   .xl\:w-\[45\%\] {
