@@ -28,12 +28,12 @@ $$
 So, I keep forgetting to write down exactly how I go about the implementation for building a navigable graph via set cover. So here goes. 
 
 ## Setup
-**Goal:** Construct a graph $G = (V, E)$ with the fewest number of edges such that $G$ is _navigable_ for some distance metric $d$. $G$ is navigable iff for every $s,t \in V$, pair, there exists an out-edge $(s, k) \in E$ s.t. $d(t, k) < d(s,k)$. 
+**Goal:** Construct a graph $G = (V, E)$ with the fewest number of edges such that $G$ is _navigable_ for some distance metric $d$. $G$ is navigable iff for every $s,t \in V$, pair, there exists a directed edge $(s, k) \in E$ s.t. $d(k, t) < d(s,t)$. 
 
 Let $\mathbf V$ be an $n \times m$ matrix, which contains $n$ vectors of length $m$ and let $\mathbf M \in \mathbb R^{n \times n}$ be the distance matrix, such that the $i,j$th entry of $\mathbf M$ corresponds to the distance between the $i$th and $j$th vectors in $\mathbf V$. From $M$, we can compute a _permutation matrix_, $\mathbf \Pi^{-1} \in \mathbb N^{n \times n}$, where $\Pi^{-1}_{ij}$ is the positional rank of the $V_j$ in the sorted list of $V_i$'s nearest neighbors. I.e, if $\Pi^{-1}_{ij} = k$, $V_j$ is $V_i$'s $k$th closest neighbor.
 
 ## Vectorized Set Construction and Greedy Set Cover
-Consider solving the set cover instance on vector $V_i$. There are exactly $n-1$ sets, one for each of the other vectors and we will call these $S_{i \to j}$. Each of the sets contains all the vectors that traversing the edge $(i,j)$ would bring a search algorithm strictly closer to. Formally:
+Consider solving the set cover instance on vector $V_i$. There are exactly $n-1$ sets (one for each of the other vectors) and we will call these $S_{i \to j}$. Each of the sets contains all the vectors that traversing the edge $(i,j)$ would bring a search algorithm strictly closer to. Formally:
 $$
     S_{i\to j} = \left\{k \in [1, \dots, n] : d(V_j, V_k) < d(V_i, V_k) \right\}
 $$
