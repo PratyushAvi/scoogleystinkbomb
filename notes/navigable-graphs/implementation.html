@@ -166,7 +166,7 @@ window.Quarto = {
 <section id="example" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="example"><span class="header-section-number">3</span> Example</h2>
 <p>Consider the following set of points: <span class="math inline">\(A(-2,2),B(2,1),C(1,-1),D(-3,-2),E(2,-3)\)</span>.</p>
-<div id="cd301e85" class="cell" data-execution_count="1">
+<div id="b9fdf772" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -210,57 +210,102 @@ window.Quarto = {
 <p>The distance matrix (with Euclidean distances) is:</p>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> np.array([</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>],</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,<span class="dv">1</span>],</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>],</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>]</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute squared distances</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> cdist(points, points, metric<span class="op">=</span><span class="st">'sqeuclidean'</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> grid.astype(<span class="bu">int</span>)</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Build LaTeX string with sqrt symbols</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">=</span> <span class="vs">r'\begin{equation*}\mathbf</span><span class="sc">{M}</span><span class="vs"> = \begin</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [<span class="st">' &amp; '</span>.join(<span class="vs">r'\sqrt{'</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">int</span>(val)) <span class="op">+</span> <span class="vs">r'}'</span> <span class="cf">for</span> val <span class="kw">in</span> row) <span class="cf">for</span> row <span class="kw">in</span> grid]</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r' \\ '</span>.join(rows)</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r'\end</span><span class="sc">{bmatrix}</span><span class="vs">\end{equation*}'</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(latex_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute squared distances</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> cdist(points, points, metric<span class="op">=</span><span class="st">'sqeuclidean'</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> grid.astype(<span class="bu">int</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Build LaTeX string with sqrt symbols</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">=</span> <span class="vs">r'\begin{equation*}\mathbf</span><span class="sc">{M}</span><span class="vs"> = \begin</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [<span class="st">' &amp; '</span>.join(<span class="vs">r'\sqrt{'</span> <span class="op">+</span> <span class="bu">str</span>(<span class="bu">int</span>(val)) <span class="op">+</span> <span class="vs">r'}'</span> <span class="cf">for</span> val <span class="kw">in</span> row) <span class="cf">for</span> row <span class="kw">in</span> grid]</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r' \\ '</span>.join(rows)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r'\end</span><span class="sc">{bmatrix}</span><span class="vs">\end{equation*}'</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(latex_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <p><span class="math display">\[\begin{equation*}\mathbf{M} = \begin{bmatrix}\sqrt{0} &amp; \sqrt{17} &amp; \sqrt{18} &amp; \sqrt{17} &amp; \sqrt{41} \\ \sqrt{17} &amp; \sqrt{0} &amp; \sqrt{5} &amp; \sqrt{34} &amp; \sqrt{16} \\ \sqrt{18} &amp; \sqrt{5} &amp; \sqrt{0} &amp; \sqrt{17} &amp; \sqrt{5} \\ \sqrt{17} &amp; \sqrt{34} &amp; \sqrt{17} &amp; \sqrt{0} &amp; \sqrt{26} \\ \sqrt{41} &amp; \sqrt{16} &amp; \sqrt{5} &amp; \sqrt{26} &amp; \sqrt{0}\end{bmatrix}\end{equation*}\]</span></p>
 <p>and the permutation matrix is:</p>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> rankdata</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> np.array([</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>],</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,<span class="dv">1</span>],</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>],</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    [<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">2</span>],</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    [<span class="dv">2</span>,<span class="op">-</span><span class="dv">3</span>]</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute squared distances</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> rankdata(cdist(points, points, metric<span class="op">=</span><span class="st">'sqeuclidean'</span>), method<span class="op">=</span><span class="st">'ordinal'</span>, axis<span class="op">=-</span><span class="dv">1</span>)</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> grid.astype(<span class="bu">int</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Build LaTeX string with sqrt symbols</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">=</span> <span class="vs">r'\begin{equation*}\mathbf{\Pi^{-1</span><span class="sc">}}</span><span class="vs"> = \begin</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [<span class="st">' &amp; '</span>.join(<span class="bu">str</span>(<span class="bu">int</span>(val)) <span class="cf">for</span> val <span class="kw">in</span> row) <span class="cf">for</span> row <span class="kw">in</span> grid]</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r' \\ '</span>.join(rows)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r'\end</span><span class="sc">{bmatrix}</span><span class="vs">\end{equation*}'</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(latex_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> rankdata</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute squared distances</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>perm <span class="op">=</span> rankdata(grid, method<span class="op">=</span><span class="st">'min'</span>, axis<span class="op">=-</span><span class="dv">1</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>perm <span class="op">=</span> perm.astype(<span class="bu">int</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Build LaTeX string </span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">=</span> <span class="vs">r'\begin{equation*}\mathbf{\Pi^{-1</span><span class="sc">}}</span><span class="vs"> = \begin</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> [<span class="st">' &amp; '</span>.join(<span class="bu">str</span>(<span class="bu">int</span>(val)) <span class="cf">for</span> val <span class="kw">in</span> row) <span class="cf">for</span> row <span class="kw">in</span> perm]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r' \\ '</span>.join(rows)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r'\end</span><span class="sc">{bmatrix}</span><span class="vs">\end{equation*}'</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(latex_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<p><span class="math display">\[\begin{equation*}\mathbf{\Pi^{-1}} = \begin{bmatrix}1 &amp; 2 &amp; 4 &amp; 3 &amp; 5 \\ 4 &amp; 1 &amp; 2 &amp; 5 &amp; 3 \\ 5 &amp; 2 &amp; 1 &amp; 4 &amp; 3 \\ 2 &amp; 5 &amp; 3 &amp; 1 &amp; 4 \\ 5 &amp; 3 &amp; 2 &amp; 4 &amp; 1\end{bmatrix}\end{equation*}\]</span></p>
-<p><em>(more code and explanation to come)…</em></p>
+<p><span class="math display">\[\begin{equation*}\mathbf{\Pi^{-1}} = \begin{bmatrix}1 &amp; 2 &amp; 4 &amp; 2 &amp; 5 \\ 4 &amp; 1 &amp; 2 &amp; 5 &amp; 3 \\ 5 &amp; 2 &amp; 1 &amp; 4 &amp; 2 \\ 2 &amp; 5 &amp; 2 &amp; 1 &amp; 4 \\ 5 &amp; 3 &amp; 2 &amp; 4 &amp; 1\end{bmatrix}\end{equation*}\]</span></p>
+<p>Observe the entries of each row: there are duplicate entries since multiple points can be equidistant from a given point. <strong>I’m still not exactly sure on how to do tie-breaking</strong>.</p>
+<p>To construct the sets, we will compare each column of the permutation matrix against every other column, yielding the following sets. Here, <span class="math inline">\(S_{u}\)</span> corresponds to the matrix whose columns form the set cover instance for point <span class="math inline">\(u\)</span>.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sets <span class="op">=</span> [perm <span class="op">&lt;</span> perm[:, [j]] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>)]</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Build LaTeX string </span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">=</span> <span class="vs">r'\begin{gather*}'</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">5</span>):</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">3</span>:  <span class="co"># After the 3rd matrix (index 2), break to new line</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        latex_matrix <span class="op">+=</span> <span class="vs">r'\\[2em]'</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> i <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        latex_matrix <span class="op">+=</span> <span class="vs">r'\quad'</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    latex_matrix <span class="op">+=</span> <span class="vs">r'\mathbf</span><span class="sc">{S}</span><span class="vs">_{'</span> <span class="op">+</span> <span class="bu">chr</span>(<span class="dv">65</span> <span class="op">+</span> i) <span class="op">+</span> <span class="vs">r'} = \begin</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> [<span class="st">' &amp; '</span>.join(<span class="bu">str</span>(<span class="bu">int</span>(val)) <span class="cf">for</span> val <span class="kw">in</span> row) <span class="cf">for</span> row <span class="kw">in</span> sets[i]]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    latex_matrix <span class="op">+=</span> <span class="vs">r' \\ '</span>.join(rows)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    latex_matrix <span class="op">+=</span> <span class="vs">r'\end</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>latex_matrix <span class="op">+=</span> <span class="vs">r'\end{gather*}'</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(latex_matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p><span class="math display">\[\begin{gather*}\mathbf{S}_{A} = \begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1\end{bmatrix}\quad\mathbf{S}_{B} = \begin{bmatrix}1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 1\end{bmatrix}\quad\mathbf{S}_{C} = \begin{bmatrix}1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}\\[2em]\mathbf{S}_{D} = \begin{bmatrix}1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 1\end{bmatrix}\quad\mathbf{S}_{E} = \begin{bmatrix}1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}\end{gather*}\]</span></p>
+<p>I will now walk-through the greedy set cover for point <span class="math inline">\(C\)</span>. Initialize the uncovered vector <span class="math inline">\(\mathbf u = [1, 1, 0, 1, 1]^\top\)</span>.</p>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.ones(<span class="dv">5</span>, dtype<span class="op">=</span><span class="bu">int</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>u[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>outputs <span class="op">=</span> []</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>u_steps <span class="op">=</span> [u]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> np.<span class="bu">any</span>(u):</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    prod <span class="op">=</span> u <span class="op">@</span> sets[<span class="dv">2</span>]</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    outputs.append(prod.copy())</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    j <span class="op">=</span> np.argmax(prod)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    u <span class="op">=</span> np.bitwise_not(np.bitwise_or(np.bitwise_not(u), sets[<span class="dv">2</span>][:, j]))</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    u_steps.append(u)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Build LaTeX string </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>out <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> step, (prod, u_step) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(outputs, u_steps[:<span class="op">-</span><span class="dv">1</span>])):</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="ss">f"**Round </span><span class="sc">{</span>step <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">**"</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="vs">r'\begin{gather*}'</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="vs">r'\begin</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="vs">r''</span>.join(<span class="st">' &amp; '</span>.join(<span class="bu">str</span>(<span class="bu">int</span>(val)) <span class="cf">for</span> val <span class="kw">in</span> u_step))</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="vs">r'\end</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    latex_matrix <span class="op">=</span> <span class="vs">r'\begin</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    rows <span class="op">=</span> [<span class="st">' &amp; '</span>.join(<span class="bu">str</span>(<span class="bu">int</span>(val)) <span class="cf">for</span> val <span class="kw">in</span> row) <span class="cf">for</span> row <span class="kw">in</span> sets[<span class="dv">2</span>]]</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    latex_matrix <span class="op">+=</span> <span class="vs">r' \\ '</span>.join(rows)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    latex_matrix <span class="op">+=</span> <span class="vs">r'\end</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> latex_matrix <span class="op">+</span> <span class="vs">r'= \begin</span><span class="sc">{bmatrix}</span><span class="vs">'</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="vs">r''</span>.join(<span class="st">' &amp; '</span>.join(<span class="bu">str</span>(<span class="bu">int</span>(val)) <span class="cf">for</span> val <span class="kw">in</span> prod))</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="vs">r'\end</span><span class="sc">{bmatrix}</span><span class="vs">'</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="vs">r'\\[1em]'</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    out <span class="op">+=</span> <span class="vs">r'\end{gather*}'</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\n</span><span class="st">'</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    covered_elements <span class="op">=</span> [<span class="bu">chr</span>(<span class="dv">65</span><span class="op">+</span>a) <span class="cf">for</span> a <span class="kw">in</span> np.where(sets[<span class="dv">2</span>][:, np.argmax(prod)])[<span class="dv">0</span>]]</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    out<span class="op">+=</span> <span class="ss">f"Select column </span><span class="sc">{</span><span class="bu">chr</span>(<span class="dv">65</span> <span class="op">+</span> np.argmax(prod))<span class="sc">}</span><span class="ss">, which covers </span><span class="sc">{</span><span class="st">', '</span><span class="sc">.</span>join(covered_elements)<span class="sc">}</span><span class="ss">."</span> <span class="op">+</span> <span class="st">'</span><span class="ch">\n\n</span><span class="st">'</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(out)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<p><strong>Round 1</strong> <span class="math display">\[\begin{gather*}\begin{bmatrix}1 &amp; 1 &amp; 0 &amp; 1 &amp; 1\end{bmatrix}\begin{bmatrix}1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}= \begin{bmatrix}1 &amp; 2 &amp; 0 &amp; 2 &amp; 1\end{bmatrix}
+\\[1em]\end{gather*}\]</span> Select column B, which covers A, B.</p>
+<p><strong>Round 2</strong> <span class="math display">\[\begin{gather*}\begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 1 &amp; 1\end{bmatrix}\begin{bmatrix}1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}= \begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 1 &amp; 1\end{bmatrix}
+\\[1em]\end{gather*}\]</span> Select column D, which covers A, D.</p>
+<p><strong>Round 3</strong> <span class="math display">\[\begin{gather*}\begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}\begin{bmatrix}1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}= \begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}
+\\[1em]\end{gather*}\]</span> Select column E, which covers E.</p>
 </section>
 
 </main>
