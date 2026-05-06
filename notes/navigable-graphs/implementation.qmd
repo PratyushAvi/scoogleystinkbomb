@@ -179,3 +179,6 @@ for step, (prod, u_step) in enumerate(zip(outputs, u_steps[:-1])):
     out+= f"Select column {chr(65 + np.argmax(prod))}, which covers {', '.join(covered_elements)}." + '\n\n'
 print(out)
 ```
+
+## Polytope
+$x_t = \alpha_t 1_{S_t} + (1- \alpha_t) x_{t+1}$

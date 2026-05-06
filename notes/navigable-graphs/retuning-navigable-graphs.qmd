@@ -1,0 +1,39 @@
+---
+title: "Rebuilding Navigable Graphs"
+bibliography: references.bib
+format:
+    html:
+        theme: cosmo
+        toc: true
+        toc-depth: 2
+        number-sections: true
+        code-fold: true
+execute:
+    echo: true
+    warning: false
+    error: false
+# python: /usr/local/anaconda3/envs/aml/bin/python
+---
+
+::: {.hidden}
+
+\newcommand*{\e}{\mathrm{e}}
+\renewcommand{\P}{\mathrm{P}}
+
+$$
+\DeclareMathOperator*{\argmax}{argmax}
+$$
+
+:::
+
+Say you would like to maintain two navigable graphs with different reachability conditions, $\alpha_1$ and $\alpha_2$. Both graphs will have different trade-offs for accuracy and retrieval times, so having both could be beneficial depending on the application. Naively, we could just compute both of them separately, but this becomes somewhat infeasible as the dataset size grows and perhaps wasteful when you wish to hold graphs for more $\alpha$ values. 
+
+To achieve this, @zhang2026 proposes computing a single graph for the strongest reachability condition and then simply tune this graph to get the other graphs with weaker reachability conditions. More formally, for some point set $P \subset \mathbb{R}^d$ and reachability constraints $\alpha_1 > \alpha_2 \geq 1$, compute an $\alpha_1$-reachable navigable graph $G_1 = (P, E_1)$ using Robust Prune, and run robust prune on $E_1$ to obtain $E_2$ for the graph $G_2 = (P, E_2)$. Now, they show that $G_2$ would not be exactly $\alpha_2$ reachable, but you get the idea (see their paper for more details about the exact algorithm and results).
+
+Their algorithm somewhat hinges on the idea that an $\alpha_2$-reachable graph would be "embedded" in an $\alpha_1$-reachable graph, which lead me to the following question:
+    
+For some point set $P \subset \mathbb{R}^d$ and reachability constraints $\alpha_1 > \alpha_2 \geq 1$, let $G_1 = (P, E_1)$ be an $\alpha_1$-reachable navigable graph and let $G_2 = (P, E_2)$ be an $\alpha_2$-reachable navigable graph. Then, is $E_2 \subseteq E_1$ always?
+
+In general, this is not true since navigable graphs are not unique. A very simple example would be that $G_1$ was the result of the optimal set cover and $G_2$ was the result of running greedy set cover. But, it's somewhat more interesting when you compare graphs that were constructed using the exact same algorithm.
+
+## Robust Prune

@@ -111,6 +111,7 @@ window.Quarto = {
   <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup"><span class="header-section-number">1</span> Setup</a></li>
   <li><a href="#vectorized-set-construction-and-greedy-set-cover" id="toc-vectorized-set-construction-and-greedy-set-cover" class="nav-link" data-scroll-target="#vectorized-set-construction-and-greedy-set-cover"><span class="header-section-number">2</span> Vectorized Set Construction and Greedy Set Cover</a></li>
   <li><a href="#example" id="toc-example" class="nav-link" data-scroll-target="#example"><span class="header-section-number">3</span> Example</a></li>
+  <li><a href="#polytope" id="toc-polytope" class="nav-link" data-scroll-target="#polytope"><span class="header-section-number">4</span> Polytope</a></li>
   </ul>
 </nav>
 </div>
@@ -166,7 +167,7 @@ window.Quarto = {
 <section id="example" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="example"><span class="header-section-number">3</span> Example</h2>
 <p>Consider the following set of points: <span class="math inline">\(A(-2,2),B(2,1),C(1,-1),D(-3,-2),E(2,-3)\)</span>.</p>
-<div id="b9fdf772" class="cell" data-execution_count="1">
+<div id="145de3f6" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -306,6 +307,10 @@ window.Quarto = {
 \\[1em]\end{gather*}\]</span> Select column D, which covers A, D.</p>
 <p><strong>Round 3</strong> <span class="math display">\[\begin{gather*}\begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}\begin{bmatrix}1 &amp; 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}= \begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\end{bmatrix}
 \\[1em]\end{gather*}\]</span> Select column E, which covers E.</p>
+</section>
+<section id="polytope" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="polytope"><span class="header-section-number">4</span> Polytope</h2>
+<p><span class="math inline">\(x_t = \alpha_t 1_{S_t} + (1- \alpha_t) x_{t+1}\)</span></p>
 </section>
 
 </main>
